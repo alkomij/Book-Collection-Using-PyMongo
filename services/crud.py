@@ -1,8 +1,13 @@
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # MongoDB Connection
-client = MongoClient('mongodb://localhost:27017/')
+MongoDB_URI = os.getenv('MONGODB_URI')
+client = MongoClient(MongoDB_URI)
 db = client['bookstore_db']
 
 # Collections
