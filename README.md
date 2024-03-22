@@ -7,5 +7,5 @@ Working with MongoDB and Python to create a scalable web application.
 Installing required libraries
 
 ```bash
-pip install x
+pip install Flask Flask-CORS pymongo Flask-MongoEngine python-dotenv
 ```
