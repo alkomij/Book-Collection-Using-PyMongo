@@ -1,3 +1,7 @@
+# Author: Hasan Siddiqui
+# Version: 1.0
+# Date: Mar 22, 2024
+
 from flask import Flask
 from flask_cors import CORS
 from flask_mongoengine import MongoEngine

@@ -1,4 +1,4 @@
-from models.user import User  # Adjust the import path as necessary
+from models.user import User
 
 class UserService:
 

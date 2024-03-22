@@ -1,3 +1,7 @@
+# Author: Hasan Siddiqui
+# Version: 1.0
+# Date: Mar 22, 2024
+
 from flask import Blueprint, request, jsonify
 from models.user import User  # Adjust import path as necessary
 from mongoengine.errors import NotUniqueError, ValidationError, DoesNotExist

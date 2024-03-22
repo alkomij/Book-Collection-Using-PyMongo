@@ -1,3 +1,7 @@
+# Author: Hasan Siddiqui
+# Version: 1.0
+# Date: Mar 22, 2024
+
 from mongoengine import Document, StringField, ListField, FloatField, IntField
 
 class Book(Document):

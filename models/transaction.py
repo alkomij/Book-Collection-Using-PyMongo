@@ -1,3 +1,7 @@
+# Author: Hasan Siddiqui
+# Version: 1.0
+# Date: Mar 22, 2024
+
 from datetime import datetime
 from mongoengine import Document, ReferenceField, DateTimeField, BooleanField
 from .book import Book
