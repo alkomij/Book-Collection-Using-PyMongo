@@ -3,9 +3,12 @@ const Transaction = require(path.join(__dirname, '..', 'db', 'models', 'Transact
 
 class TransactionService {
 
-    // createTransaction()
+    // addTransaction()
+    // getAllTransactions()
     // findTransactionByUserId()
     // markTransactionAsReturned()
+    // updateTransaction()
+    // deleteTransaction()
     
 }
 

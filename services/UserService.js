@@ -3,7 +3,8 @@ const User = require(path.join(__dirname, 'db', 'models', 'User'));
 
 class UserService {
 
-    // createUser()
+    // addUser()
+    // getAllUsers()
     // getUserById
     // updateUser()
     // deleteUser()
