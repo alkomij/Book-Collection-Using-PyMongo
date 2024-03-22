@@ -1,8 +1,9 @@
+require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
 class DatabaseConnectionManager {
-  constructor(uri) {
-    this.uri = uri; // MongoDB URI
+  constructor() {
+    this.uri = process.env.MONGODB_URI;
     this.client = new MongoClient(this.uri, { useNewUrlParser: true, useUnifiedTopology: true });
   }
 
@@ -13,7 +14,7 @@ class DatabaseConnectionManager {
       return this.client;
     } catch (err) {
       console.error(`Failed to connect to MongoDB: ${err}`);
-      throw err; // Rethrow the error for handling by the caller
+      throw err;
     }
   }
 
@@ -23,7 +24,7 @@ class DatabaseConnectionManager {
       console.log("Disconnected from MongoDB");
     } catch (err) {
       console.error(`Failed to disconnect from MongoDB: ${err}`);
-      throw err; // Rethrow the error for handling by the caller
+      throw err;
     }
   }
 
