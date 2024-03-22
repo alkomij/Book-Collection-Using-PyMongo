@@ -1,0 +1,51 @@
+[
+    {
+      "transactionId": "txn001",
+      "userId": "user001",
+      "bookId": "book001",
+      "borrowDate": "2024-03-01",
+      "dueDate": "2024-03-15",
+      "returned": false
+    },
+    {
+      "transactionId": "txn002",
+      "userId": "user002",
+      "bookId": "book002",
+      "borrowDate": "2024-03-02",
+      "dueDate": "2024-03-16",
+      "returned": false
+    },
+    {
+      "transactionId": "txn003",
+      "userId": "user003",
+      "bookId": "book003",
+      "borrowDate": "2024-03-03",
+      "dueDate": "2024-03-17",
+      "returned": true
+    },
+    {
+      "transactionId": "txn004",
+      "userId": "user004",
+      "bookId": "book004",
+      "borrowDate": "2024-03-04",
+      "dueDate": "2024-03-18",
+      "returned": true
+    },
+    {
+      "transactionId": "txn005",
+      "userId": "user005",
+      "bookId": "book005",
+      "borrowDate": "2024-03-05",
+      "dueDate": "2024-03-19",
+      "returned": false
+    },
+    {
+      "transactionId": "txn006",
+      "userId": "user001",
+      "bookId": "book006",
+      "borrowDate": "2024-03-06",
+      "dueDate": "2024-03-20",
+      "returned": false
+    }
+]
+  

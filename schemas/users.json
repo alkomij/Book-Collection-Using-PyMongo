@@ -1,0 +1,75 @@
+[
+    {
+      "userId": "user001",
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "address": {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "state": "Anystate",
+        "zip": "12345"
+      },
+      "membershipType": "Standard"
+    },
+    {
+      "userId": "user002",
+      "name": "Jane Smith",
+      "email": "janesmith@example.com",
+      "address": {
+        "street": "456 Elm St",
+        "city": "Othertown",
+        "state": "Otherstate",
+        "zip": "67890"
+      },
+      "membershipType": "Premium"
+    },
+    {
+      "userId": "user003",
+      "name": "Alice Johnson",
+      "email": "alicejohnson@example.com",
+      "address": {
+        "street": "789 Oak St",
+        "city": "Sometown",
+        "state": "Somestate",
+        "zip": "101112"
+      },
+      "membershipType": "Standard"
+    },
+    {
+      "userId": "user004",
+      "name": "Bob Brown",
+      "email": "bobbrown@example.com",
+      "address": {
+        "street": "101 Pine St",
+        "city": "Newtown",
+        "state": "Newstate",
+        "zip": "131415"
+      },
+      "membershipType": "Standard"
+    },
+    {
+      "userId": "user005",
+      "name": "Clara Oswald",
+      "email": "claraoswald@example.com",
+      "address": {
+        "street": "202 Birch St",
+        "city": "Whotown",
+        "state": "Gallifrey",
+        "zip": "161718"
+      },
+      "membershipType": "Premium"
+    },
+    {
+      "userId": "user006",
+      "name": "Danny Pink",
+      "email": "dannypink@example.com",
+      "address": {
+        "street": "303 Cedar St",
+        "city": "Colehill",
+        "state": "Powys",
+        "zip": "192021"
+      },
+      "membershipType": "Premium"
+    }
+]
+  
