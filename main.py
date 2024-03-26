@@ -1,11 +1,15 @@
 # Author: Hasan Siddiqui
 # Version: 1.0
 # Date: Mar 22, 2024
-from flask import render_template
+from models.book import Book
 from flask import Flask, jsonify
+from flask_pymongo import PyMongo
+from flask import render_template
 from flask_cors import CORS
 from flask_mongoengine import MongoEngine
 from dotenv import load_dotenv
+from flask import Flask, render_template, request, redirect, url_for
+from pymongo import MongoClient
 import os
 
 # Load environment variables
@@ -18,11 +22,19 @@ app = Flask(__name__)
 CORS(app)
 
 # Database connection
+app.config["MONGO_URI"] = "mongodb+srv://dbUser:dbUserPassword@bookstoreapp-dev.21suk3u.mongodb.net/"
 app.config['MONGODB_SETTINGS'] = {
-    'host': os.getenv('MONGODB_URI')
+    'db': 'bookstoreapp-dev',
+    'host': 'mongodb+srv://dbUser:dbUserPassword@bookstoreapp-dev.21suk3u.mongodb.net/',
+    'port': 27017
 }
-db = MongoEngine(app)
+# MongoDB connection
+client = MongoClient("mongodb://localhost:27017/")
+db = client["bookstore"]
+collection = db["books"]
 
+db = MongoEngine(app)
+mongo = PyMongo(app)
 # Import routers
 from routes.book_routes import book_routes
 from routes.user_routes import user_routes
@@ -41,9 +53,36 @@ def home():
 # Additional routes for other pages
 @app.route('/catalog')
 def catalog():
+    books = Book.objects()
+    print(books)
     # Assuming you have a catalog.html in your templates directory
-    return render_template("catalog-list.html")
+    return render_template("catalog-list.html", books=books)
 
+@app.route('/add_book', methods=['POST'])
+def add_book():
+   if request.method == 'POST':
+        title = request.form['title']
+        author = request.form['author']
+        price = request.form['price']
+        description = request.form['description']
+        genre = request.form['genre']
+        language = request.form['language']
+        inventory_count = request.form['inventoryCount']
+
+        # Insert book into MongoDB
+        book = {
+            'title': title,
+            'author': author,
+            'price': float(price),
+            'description': description,
+            'genre': genre.split(','),
+            'language': language,
+            'inventory_count': int(inventory_count)
+        }
+        collection.insert_one(book)
+
+        return redirect(url_for('index'))
+        return 'Error: Invalid Request'  # Return a valid response if request method is not POST
 @app.route('/about')
 def about():
     # Assuming you have an about.html in your templates directory

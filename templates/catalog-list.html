@@ -35,28 +35,22 @@
                     <th>Inventory Count</th>
                     <th>Action</th>
                 </tr>
+                {% for book in books %}
                 <tr>
-                    <td>Book Title 1</td>
-                    <td>Author 1</td>
-                    <td>$19.99</td>
-                    <td>Description of book 1</td>
-                    <td>Fiction</td>
-                    <td>English</td>
-                    <td>10</td>
-                    <td>Edit | Delete</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>${{ "%.2f"|format(book.price) }}</td>
+                    <td>{{ book.description }}</td>
+                    <td>{{ ", ".join(book.genre) }}</td>
+                    <td>{{ book.language }}</td>
+                    <td>{{ book.inventoryCount }}</td>
+                    <td>Edit | Delete</td> 
                 </tr>
-                <tr>
-                    <td>Book Title 2</td>
-                    <td>Author 2</td>
-                    <td>$24.99</td>
-                    <td>Description of book 2</td>
-                    <td>Non-fiction</td>
-                    <td>Spanish</td>
-                    <td>15</td>
-                    <td>Edit | Delete</td>
-                </tr>
+                {% endfor %}
             </table>
+            
         </div>
+        <button onclick="window.location.href='{{ url_for('add_book') }}'">Add Book</button>
     </div>
     
     <footer>

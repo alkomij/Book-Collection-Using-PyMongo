@@ -5,6 +5,7 @@
 from mongoengine import Document, StringField, ListField, FloatField, IntField
 
 class Book(Document):
+    bookId = StringField(required=True)
     title = StringField(required=True)
     author = StringField(required=True)
     genre = ListField(StringField())
