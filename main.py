@@ -28,10 +28,6 @@ app.config['MONGODB_SETTINGS'] = {
     'host': 'mongodb+srv://dbUser:dbUserPassword@bookstoreapp-dev.21suk3u.mongodb.net/',
     'port': 27017
 }
-# MongoDB connection
-client = MongoClient("mongodb://localhost:27017/")
-db = client["bookstore"]
-collection = db["books"]
 
 db = MongoEngine(app)
 mongo = PyMongo(app)
@@ -58,31 +54,6 @@ def catalog():
     # Assuming you have a catalog.html in your templates directory
     return render_template("catalog-list.html", books=books)
 
-@app.route('/add_book', methods=['POST'])
-def add_book():
-   if request.method == 'POST':
-        title = request.form['title']
-        author = request.form['author']
-        price = request.form['price']
-        description = request.form['description']
-        genre = request.form['genre']
-        language = request.form['language']
-        inventory_count = request.form['inventoryCount']
-
-        # Insert book into MongoDB
-        book = {
-            'title': title,
-            'author': author,
-            'price': float(price),
-            'description': description,
-            'genre': genre.split(','),
-            'language': language,
-            'inventory_count': int(inventory_count)
-        }
-        collection.insert_one(book)
-
-        return redirect(url_for('index'))
-        return 'Error: Invalid Request'  # Return a valid response if request method is not POST
 @app.route('/about')
 def about():
     # Assuming you have an about.html in your templates directory
