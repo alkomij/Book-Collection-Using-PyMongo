@@ -1,7 +1,7 @@
 # Author: Hasan Siddiqui
 # Version: 1.0
 # Date: Mar 22, 2024
-
+from flask import render_template
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_mongoengine import MongoEngine
@@ -33,10 +33,21 @@ app.register_blueprint(book_routes, url_prefix='/books')
 app.register_blueprint(user_routes, url_prefix='/users')
 app.register_blueprint(transaction_routes, url_prefix='/transactions')
 
-# Define a route for the root URL "/"
+# Home page route
 @app.route('/')
 def home():
-    return jsonify(message="Welcome to our Bookstore/Library Management System!"), 200
+    return render_template('home.html')
+
+# Additional routes for other pages
+@app.route('/catalog')
+def catalog():
+    # Assuming you have a catalog.html in your templates directory
+    return render_template("catalog-list.html")
+
+@app.route('/about')
+def about():
+    # Assuming you have an about.html in your templates directory
+    return render_template("about.html")
 
 # Catch unhandled requests (404 Not Found)
 @app.errorhandler(404)

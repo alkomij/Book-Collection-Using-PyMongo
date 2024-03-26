@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Book Catalog</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
@@ -12,9 +12,9 @@
             <h1>Book Store</h1>
             <nav>
                 <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="catalog-list.html">Catalog</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('catalog') }}">Catalog</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
                 </ul>
             </nav>
         </div>
