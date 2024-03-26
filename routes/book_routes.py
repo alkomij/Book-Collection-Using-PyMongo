@@ -3,7 +3,7 @@
 # Date: Mar 22, 2024
 
 from flask import Blueprint, request, jsonify
-from models.book import Book  # Adjust the import path as necessary
+from models.book import Book
 from mongoengine.errors import NotUniqueError, ValidationError, DoesNotExist
 
 book_routes = Blueprint('book_routes', __name__)
@@ -53,3 +53,27 @@ def delete_book(book_id):
         return jsonify({'message': 'Book deleted successfully'}), 200
     except DoesNotExist:
         return jsonify({'error': 'Book not found'}), 404
+
+# @book_routes.route('/books')
+# def get_books():
+#     books = []
+#     try:
+#         # Fetch all books from your database
+#         for book in models.book.objects:  # Assuming you have a Book model
+#             books.append({
+#                 'title': book.title,
+#                 'author': book.author,
+#                 'genre': book.genre,
+#                 'price': book.price,
+#                 'description': book.description,
+#                 'language': book.language,
+#                 'inventoryCount': book.inventoryCount
+#             })
+#         return jsonify(books), 200
+#     except Exception as e:
+#         return jsonify(error=str(e)), 500
+
+# @book_routes.route('/catalog')
+# def catalog_list():
+#     books = Book.objects()
+#     return render_template('catalog-list.html', books=books)
