@@ -31,7 +31,7 @@ app.config["MONGO_URI"] = "mongodb+srv://dbUser:dbUserPassword@bookstoreapp-dev.
 app.config['MONGODB_SETTINGS'] = {
     'db': 'bookstoreapp-dev',
     'host': 'mongodb+srv://dbUser:dbUserPassword@bookstoreapp-dev.21suk3u.mongodb.net/',
-    'port': 27017
+    'port': 3000
 }
 
 db = MongoEngine(app)
@@ -42,7 +42,7 @@ app.register_blueprint(book_routes, url_prefix='/books')
 app.register_blueprint(user_routes, url_prefix='/users')
 app.register_blueprint(transaction_routes, url_prefix='/transactions')
 
-# Home page route
+# Routers
 @app.route('/home/')
 def home():
     return render_template('home.html')
