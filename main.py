@@ -12,6 +12,11 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 import os
 
+# Import routers
+from routes.book_routes import book_routes
+from routes.user_routes import user_routes
+from routes.transaction_routes import transaction_routes
+
 # Load environment variables
 load_dotenv()
 
@@ -31,10 +36,6 @@ app.config['MONGODB_SETTINGS'] = {
 
 db = MongoEngine(app)
 mongo = PyMongo(app)
-# Import routers
-from routes.book_routes import book_routes
-from routes.user_routes import user_routes
-from routes.transaction_routes import transaction_routes
 
 # Register blueprints (similar to using routers in Express)
 app.register_blueprint(book_routes, url_prefix='/books')
@@ -42,21 +43,20 @@ app.register_blueprint(user_routes, url_prefix='/users')
 app.register_blueprint(transaction_routes, url_prefix='/transactions')
 
 # Home page route
-@app.route('/')
+@app.route('/home/')
 def home():
     return render_template('home.html')
 
-# Additional routes for other pages
-@app.route('/catalog')
+# Catalog page route
+@app.route('/catalog/')
 def catalog():
     books = Book.objects()
     print(books)
-    # Assuming you have a catalog.html in your templates directory
     return render_template("catalog-list.html", books=books)
 
-@app.route('/about')
+# About page route
+@app.route('/about/')
 def about():
-    # Assuming you have an about.html in your templates directory
     return render_template("about.html")
 
 # Catch unhandled requests (404 Not Found)
