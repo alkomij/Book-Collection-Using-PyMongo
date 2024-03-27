@@ -43,19 +43,21 @@ app.register_blueprint(user_routes, url_prefix='/users')
 app.register_blueprint(transaction_routes, url_prefix='/transactions')
 
 # Routers
-@app.route('/home/')
+@app.route('/index.html')
+def index():
+    return render_template('index.html')
+
+@app.route('/home.html')
 def home():
     return render_template('home.html')
 
-# Catalog page route
-@app.route('/catalog/')
+@app.route('/catalog.html')
 def catalog():
     books = Book.objects()
     print(books)
     return render_template("catalog-list.html", books=books)
 
-# About page route
-@app.route('/about/')
+@app.route('/about.html')
 def about():
     return render_template("about.html")
 
