@@ -1,0 +1,157 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px; /* Improved readability */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa; /* Slightly lighter background color for better contrast */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styles */
+header {
+    background: #343a40; /* Darker header color */
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 28px; /* Larger font size for the header */
+}
+
+header ul {
+    list-style: none;
+    padding: 0;
+}
+
+header ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: color 0.3s ease; /* Smooth transition for link color change */
+}
+
+header a:hover {
+    color: #ccc; /* Lighter color on hover */
+}
+
+/* Welcome section styles */
+#welcome {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px; /* Increased padding for better spacing */
+    background: #f8f9fa; /* Lighter background color */
+}
+
+#welcome h2 {
+    margin-bottom: 20px; /* Increased margin for better separation */
+    font-size: 24px; /* Larger font size for better emphasis */
+}
+
+/* Catalog button styles */
+.catalog-button {
+    margin-top: 40px; /* Increased margin for better spacing */
+}
+
+.button {
+    padding: 12px 36px; /* Increased padding for better button size */
+    font-size: 18px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+}
+
+/* catalog-list.html */
+#books-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+    background: #f8f9fa; /* Lighter background color */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd; /* Lighter border color for better contrast */
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Footer styles */
+footer {
+    background: #343a40; /* Darker footer color */
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+/* About section styles */
+#about {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px; /* Increased padding for better spacing */
+    background: #f8f9fa; /* Lighter background color */
+}
+
+#about h2 {
+    margin-bottom: 20px; /* Increased margin for better separation */
+    font-size: 24px; /* Larger font size for better emphasis */
+}
+
+#about p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Media Queries for responsive layout */
+@media (max-width: 768px) {
+    header ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
