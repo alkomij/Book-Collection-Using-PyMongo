@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <div class="bookstore-title">Book Store</div>
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Book Store</h1>
             <nav>
                 <ul>
                     <li><a href="{{ url_for('home') }}">Home</a></li>
