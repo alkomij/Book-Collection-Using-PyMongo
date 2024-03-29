@@ -1,10 +1,47 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Store</title>
+    <link rel="stylesheet" href="/static/css/style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
 
-{% block title %}About{% endblock %}
+    <header>
+        <div class="container">
+            <h1>Book Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('catalog') }}">Catalog</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-{% block content %}
-<div class="container">
-    <h2>About Book Store</h2>
-    <p>about us....</p>
-</div>
-{% endblock %}
+    <div id="about" class="container">
+        <h2>Introduction</h2>
+        <p>This project aims to address the challenges faced by bookstores and libraries in managing book listings and ensuring user access. Recognizing the importance of an efficient, accessible, and user-friendly catalog system, we propose leveraging cloud technology, MongoDB, and Python to create a useful web catalog. This solution is designed to easily manage the process of storing books, enhance user experience, and accommodate the evolving needs of modern bookstores and libraries. Our choice of technologies reflects a commitment to scalability, reliability, and ease of use. This will ensure significant improvements in the way books are cataloged and accessed.</p>
+
+            <h2>Team Members:</h2>
+        <p>Ali Komijani (komi0003@algonquinlive.com)</p>
+        <p>Nick Kostik (kost0033@algonquinlive.com)</p>
+        <p>Laura Mayer (maye0097@algonquinlive.com)</p>
+        <p>Muhammad Rehman (rehm0023@algonquinlive.com)</p>
+        <p> Hasan Siddiqui (sidd0080@algonquinlive.com)</p>
+        <p> Mohammadhassan Yeganeshenas (yega0004@algonquinlive.com)</p>
+            
+        <div class="catalog-button">
+            <a href="{{ url_for('catalog') }}" class="button">Browse Catalog</a>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>CST8276_020 - Group 3 -  Final Group Application (Book Store Catelog with MongoDB using Microsoft Azure)</p>
+        </div>
+    </footer>
+
+</body>
+</html>
