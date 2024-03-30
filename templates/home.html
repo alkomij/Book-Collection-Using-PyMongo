@@ -1,38 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <div class="bookstore-title">Book Store</div>
-    <link rel="stylesheet" href="/static/css/style.css"> <!-- Link to your CSS file -->
-</head>
-<body>
+{% extends 'base.html' %}
 
-    <header>
-        <div class="container">
-            <nav>
-                <ul>
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="{{ url_for('catalog') }}">Catalog</a></li>
-                    <li><a href="{{ url_for('about') }}">About</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+{% block title %}Home{% endblock %}
 
-    <div id="welcome" class="container">
-        <h2>Welcome to our Book Store!</h2>
-        <p>Explore our vast collection of books from various genres. Find your next read with us!</p>
-        <p>Our project aims to revolutionize book cataloging and user access for bookstores and libraries by leveraging MongoDB and Python. By addressing common challenges such as data inaccuracy, slow access speeds, data volume issues, and user access limitations, we propose a comprehensive solution that encompasses database setup, data model design, Python integration, and performance optimization. Through the demonstration of MongoDB's capabilities in handling large volumes of data, ensuring data consistency, and providing efficient access, we aim to showcase the scalability, reliability, and flexibility of our solution. With a meticulous work plan in place, our team is committed to delivering a robust web catalog application that meets the evolving needs of modern bookstores and libraries, ultimately enhancing the user experience and streamlining book management processes.</p>
-        <div class="catalog-button">
-            <a href="{{ url_for('catalog') }}" class="button">Browse Catalog</a>
-        </div>
+{% block content %}
+<div id="welcome" class="container">
+    <h2>Welcome to our Book Store!</h2>
+    <p>Explore our vast collection of books from various genres. Find your next read with us!</p>
+    <p>Our project aims to revolutionize book cataloging and user access for bookstores and libraries by leveraging MongoDB and Python. By addressing common challenges such as data inaccuracy, slow access speeds, data volume issues, and user access limitations, we propose a comprehensive solution that encompasses database setup, data model design, Python integration, and performance optimization. Through the demonstration of MongoDB's capabilities in handling large volumes of data, ensuring data consistency, and providing efficient access, we aim to showcase the scalability, reliability, and flexibility of our solution. With a meticulous work plan in place, our team is committed to delivering a robust web catalog application that meets the evolving needs of modern bookstores and libraries, ultimately enhancing the user experience and streamlining book management processes.</p>
+    <div class="catalog-button">
+        <a href="{{ url_for('catalog') }}" class="button">Browse Catalog</a>
     </div>
-    
-    <footer>
-        <div class="container">
-            <p>CST8276_020 - Group 3 - Final Group Application (Book Store Catelog with MongoDB using Microsoft Azure)</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+</div>
+{% endblock %}
