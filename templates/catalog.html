@@ -4,9 +4,13 @@
 
 {% block content %}
 <div class="container">
-    <div class="add-book-button" style="margin-bottom: 20px;">
-        <a href="{{ url_for('add_book') }}" class="btn btn-success">Add Book</a>
-    </div>
+    <h2>Book Catalog</h2>
+
+    <!-- Search Bar -->
+    <form class="search-form">
+        <input type="text" id="search-input" placeholder="Search...">
+    </form>
+
     <div id="books-list">
         <table>
             <tr>
@@ -22,7 +26,7 @@
                 <th>Action</th>
             </tr>
             {% for book in books %}
-            <tr>
+            <tr class="book-row">
                 <td>{{ book.ISBN }}</td>
                 <td>{{ book.Title }}</td>
                 <td>{{ book.AuthorID }}</td>
@@ -41,4 +45,27 @@
         </table>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var searchInput = document.getElementById('search-input');
+        var bookRows = document.getElementsByClassName('book-row');
+
+        searchInput.addEventListener('keyup', function() {
+            var searchTerm = this.value.toLowerCase();
+
+            Array.from(bookRows).forEach(function(row) {
+                var title = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+                var series = row.getElementsByTagName('td')[6].textContent.toLowerCase();
+                var edition = row.getElementsByTagName('td')[8].textContent.toLowerCase();
+
+                if (title.includes(searchTerm) || series.includes(searchTerm) || edition.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}

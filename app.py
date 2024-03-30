@@ -12,7 +12,7 @@ def home():
 @app.route('/catalog')
 def catalog():
     db = Mongodb.get_db()
-    books = db.books.find()
+    books = db.books.find().sort("ISBN", +1)
     return render_template('catalog.html', books=books)
 
 @app.route('/about')
@@ -92,19 +92,19 @@ def add_book():
 
     return render_template('add_book.html')
 
-@app.route('/search', methods=['GET', 'POST'])
-def search():
-    if request.method == 'POST':
-        search_term = request.form['search_term']
-        db = Mongodb.get_db()
-        books = db.books.find({'$or': [
-            {'Title': {'$regex': search_term, '$options': 'i'}},
-            {'Series': {'$regex': search_term, '$options': 'i'}},
-            {'Edition': {'$regex': search_term, '$options': 'i'}}
-        ]})
-        return render_template('search_results.html', books=books, search_term=search_term)
+# @app.route('/search', methods=['GET', 'POST'])
+# def search():
+#     if request.method == 'POST':
+#         search_term = request.form['search_term']
+#         db = Mongodb.get_db()
+#         books = db.books.find({'$or': [
+#             {'Title': {'$regex': search_term, '$options': 'i'}},
+#             {'Series': {'$regex': search_term, '$options': 'i'}},
+#             {'Edition': {'$regex': search_term, '$options': 'i'}}
+#         ]})
+#         return render_template('search_results.html', books=books, search_term=search_term)
 
-    return redirect(url_for('catalog'))
+#     return redirect(url_for('catalog'))
 
 if __name__ == '__main__':
     app.run(debug=True)
