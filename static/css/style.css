@@ -132,6 +132,11 @@ table {
     margin-top: 20px;
 }
 
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 th, td {
     text-align: center;
     padding: 10px;
