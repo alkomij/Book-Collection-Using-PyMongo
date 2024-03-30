@@ -98,21 +98,36 @@ def filter():
     genre_id = request.args.get('genreId', type=int, default=None)
     tag_id = request.args.get('tagId', type=int, default=None)
 
-    query = {}
-    if author_id is not None:
-        query['AuthorID'] = author_id
-    if genre_id is not None:
-        query['GenreID'] = genre_id
-    if tag_id is not None:
-        query['TagID'] = tag_id
-
-    if not query:
-        return redirect(url_for('catalog'))
-
     db = Mongodb.get_db()
+    query = {}
+    error_message = None
+
+    if author_id is not None:
+        author_exists = db.authors.find_one({'authorID': author_id})
+        if author_exists:
+            query['AuthorID'] = author_id
+        else:
+            error_message = "Author not found. Showing similar results."
+
+    if genre_id is not None:
+        genre_exists = db.genre.find_one({'genreid': genre_id})
+        if genre_exists:
+            query['GenreID'] = genre_id
+        else:
+            error_message = "Genre not found. Showing similar results."
+
+    if tag_id is not None:
+        tag_exists = db.tags.find_one({'tagID': tag_id})
+        if tag_exists:
+            query['TagID'] = tag_id
+        else:
+            error_message = "Tag not found. Showing similar results."
+
+    print(f"Query: {query}")
+
     books = db.books.find(query)
 
-    return render_template('catalog.html', books=books, author_id=author_id, genre_id=genre_id, tag_id=tag_id)
+    return render_template('filter.html', books=books, author_id=author_id, genre_id=genre_id, tag_id=tag_id, error_message=error_message)
 
 # @app.route('/search', methods=['GET', 'POST'])
 # def search():

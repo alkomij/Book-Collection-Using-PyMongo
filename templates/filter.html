@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
 
-{% block title %}Book Catalog{% endblock %}
+{% block title %}Filter{% endblock %}
 
 {% block content %}
 <div class="container">
-    <h2>Book Catalog</h2>
-    <form class="search-form">
-        <input type="text" id="search-input" placeholder="Search...">
-        <a href="{{ url_for('add_book') }}" class="btn btn-add">Add Book</a>
+    <h2>Filter Book Catalog</h2>
+    <form action="{{ url_for('filter') }}" method="get">
+        <div class="form-group">
+            <label for="authorId">Filter by Author ID:</label>
+            <input type="number" id="authorId" name="authorId" placeholder="Author ID" value="{{ author_id }}">
+        </div>
+        <div class="form-group">
+            <label for="genreId">Filter by Genre ID:</label>
+            <input type="number" id="genreId" name="genreId" placeholder="Genre ID" value="{{ genre_id }}">
+        </div>
+        <div class="form-group">
+            <label for="tagId">Filter by Tag ID:</label>
+            <input type="number" id="tagId" name="tagId" placeholder="Tag ID" value="{{ tag_id }}">
+        </div>
+        <button type="submit" id="btn-primary" class="btn btn-primary">Apply Filters</button>
+        <a href="{{ url_for('filter') }}" class="btn btn-delete">Reset Filters</a>
     </form>
     <div id="books-list">
         <table>
@@ -44,29 +56,14 @@
                 <p>No books found for the selected filters.</p>
             </div>
             {% endfor %}
+            {% if error_message %}
+            <div class="error">
+                {{ error_message }}
+            </div>
+            {% endif %}
+
         </table>
     </div>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var searchInput = document.getElementById('search-input');
-        var bookRows = document.getElementsByClassName('book-row');
 
-        searchInput.addEventListener('keyup', function() {
-            var searchTerm = this.value.toLowerCase();
-
-            Array.from(bookRows).forEach(function(row) {
-                var title = row.getElementsByTagName('td')[1].textContent.toLowerCase();
-                var series = row.getElementsByTagName('td')[6].textContent.toLowerCase();
-                var edition = row.getElementsByTagName('td')[8].textContent.toLowerCase();
-
-                if (title.includes(searchTerm) || series.includes(searchTerm) || edition.includes(searchTerm)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        });
-    });
-</script>
 {% endblock %}

@@ -102,7 +102,9 @@ footer p {
 }
 
 .form-group {
+    display: inline-block;
     width: 150px;
+    margin-right: 10px;
     margin-bottom: 15px;
 }
 
