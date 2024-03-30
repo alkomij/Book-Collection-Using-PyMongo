@@ -202,3 +202,8 @@ tr:nth-child(even) {
 .search-form button:hover {
     background-color: #23527c;
 }
+
+.error {
+    margin-top: 13px;
+    color: #dc3545;
+}
