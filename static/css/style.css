@@ -97,6 +97,10 @@ footer p {
     background-color: #218838;
 }
 
+.btn-delete {
+    margin-top: 5px;
+}
+
 .btn-delete:hover {
     background-color: #c82333;
 }
