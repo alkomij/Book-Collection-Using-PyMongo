@@ -147,6 +147,10 @@ th {
     background-color: #f8f9fa;
 }
 
+td[colspan="10"] {
+    color: #c82333;
+}
+
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }

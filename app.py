@@ -101,33 +101,42 @@ def filter():
     db = Mongodb.get_db()
     query = {}
     error_message = None
+    books_found = True
 
-    if author_id is not None:
-        author_exists = db.authors.find_one({'authorID': author_id})
-        if author_exists:
-            query['AuthorID'] = author_id
+    if author_id or genre_id or tag_id:
+        if author_id:
+            if db.authors.find_one({'authorID': author_id}):
+                query['AuthorID'] = author_id
+            else:
+                books_found = False
+
+        if genre_id:
+            if db.genre.find_one({'genreid': genre_id}):
+                query['GenreID'] = genre_id
+            else:
+                books_found = False
+
+        if tag_id:
+            if db.tags.find_one({'tagID': tag_id}):
+                query['TagID'] = tag_id
+            else:
+                books_found = False
+
+        if books_found:
+            books = list(db.books.find(query))
+            if not books:
+                books_found = False
         else:
-            error_message = "Author not found. Showing similar results."
+            books = []
 
-    if genre_id is not None:
-        genre_exists = db.genre.find_one({'genreid': genre_id})
-        if genre_exists:
-            query['GenreID'] = genre_id
-        else:
-            error_message = "Genre not found. Showing similar results."
+    else:
+        books = list(db.books.find())
 
-    if tag_id is not None:
-        tag_exists = db.tags.find_one({'tagID': tag_id})
-        if tag_exists:
-            query['TagID'] = tag_id
-        else:
-            error_message = "Tag not found. Showing similar results."
+    if not books_found:
+        error_message = "No books found for the selected filters."
 
-    print(f"Query: {query}")
+    return render_template('filter.html', books=books, error_message=error_message, author_id=author_id, genre_id=genre_id, tag_id=tag_id)
 
-    books = db.books.find(query)
-
-    return render_template('filter.html', books=books, author_id=author_id, genre_id=genre_id, tag_id=tag_id, error_message=error_message)
 
 # @app.route('/search', methods=['GET', 'POST'])
 # def search():
