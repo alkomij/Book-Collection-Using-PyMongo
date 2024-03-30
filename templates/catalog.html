@@ -6,9 +6,29 @@
 <div class="container">
     <h2>Book Catalog</h2>
 
-    <!-- Search Bar -->
     <form class="search-form">
+        <label>Search</label>
         <input type="text" id="search-input" placeholder="Search...">
+    </form>
+
+    <form action="{{ url_for('filter') }}" method="get">
+        <div class="form-group">
+            <label for="authorId">Filter by Author ID:</label>
+            <input type="number" id="authorId" name="authorId" placeholder="Author ID">
+        </div>
+    
+        <div class="form-group">
+            <label for="genreId">Filter by Genre ID:</label>
+            <input type="number" id="genreId" name="genreId" placeholder="Genre ID">
+        </div>
+    
+        <div class="form-group">
+            <label for="tagId">Filter by Tag ID:</label>
+            <input type="number" id="tagId" name="tagId" placeholder="Tag ID">
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Apply Filters</button>
+        <a href="{{ url_for('catalog') }}" class="btn btn-secondary">Reset Filters</a>
     </form>
 
     <div id="books-list">
@@ -41,6 +61,8 @@
                     <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this book?')">Delete</a>
                 </td>
             </tr>
+            {% else %}
+                <p>No books found for the selected filters.</p>
             {% endfor %}
         </table>
     </div>
