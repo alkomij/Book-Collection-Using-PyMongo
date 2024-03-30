@@ -92,6 +92,28 @@ def add_book():
 
     return render_template('add_book.html')
 
+@app.route('/filter')
+def filter():
+    author_id = request.args.get('authorId', type=int, default=None)
+    genre_id = request.args.get('genreId', type=int, default=None)
+    tag_id = request.args.get('tagId', type=int, default=None)
+
+    query = {}
+    if author_id is not None:
+        query['AuthorID'] = author_id
+    if genre_id is not None:
+        query['GenreID'] = genre_id
+    if tag_id is not None:
+        query['TagID'] = tag_id
+
+    if not query:
+        return redirect(url_for('catalog'))
+
+    db = Mongodb.get_db()
+    books = db.books.find(query)
+
+    return render_template('catalog.html', books=books)
+
 # @app.route('/search', methods=['GET', 'POST'])
 # def search():
 #     if request.method == 'POST':
