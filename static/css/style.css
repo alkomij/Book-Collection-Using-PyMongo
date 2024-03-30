@@ -93,6 +93,10 @@ footer p {
     background-color: #218838;
 }
 
+#applyFilter {
+    padding: 13px 20px;
+}
+
 .btn-danger {
     background-color: #dc3545;
 }
@@ -102,6 +106,7 @@ footer p {
 }
 
 .form-group {
+    width: 150px;
     margin-bottom: 15px;
 }
 
@@ -172,6 +177,7 @@ tr:nth-child(even) {
     color: #fff;
 }
 .search-form {
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 
