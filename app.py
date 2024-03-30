@@ -19,6 +19,38 @@ def catalog():
 def about():
     return render_template('about.html')
 
+@app.route('/add_book', methods=['GET', 'POST'])
+def add_book():
+    if request.method == 'POST':
+        ISBN = int(request.form['ISBN'])
+        Title = request.form['Title']
+        AuthorID = int(request.form['AuthorID'])
+        GenreID = int(request.form['GenreID'])
+        TagID = int(request.form['TagID'])
+        BookType = request.form['BookType']
+        Series = request.form['Series']
+        BookNumber = int(request.form['BookNumber'])
+        Edition = request.form['Edition']
+
+        book = Book(
+            ISBN=ISBN,
+            Title=Title,
+            AuthorID=AuthorID,
+            GenreID=GenreID,
+            TagID=TagID,
+            BookType=BookType,
+            Series=Series,
+            BookNumber=BookNumber,
+            Edition=Edition
+        )
+
+        db = Mongodb.get_db()
+        db.books.insert_one(book.__dict__)
+
+        return redirect(url_for('catalog'))
+
+    return render_template('add_book.html')
+
 @app.route('/edit/<book_id>', methods=['GET', 'POST'])
 def edit_book(book_id):
     db = Mongodb.get_db()
@@ -59,38 +91,6 @@ def delete_book(book_id):
     db = Mongodb.get_db()
     db.books.delete_one({'_id': ObjectId(book_id)})
     return redirect(url_for('catalog'))
-
-@app.route('/add_book', methods=['GET', 'POST'])
-def add_book():
-    if request.method == 'POST':
-        ISBN = int(request.form['ISBN'])
-        Title = request.form['Title']
-        AuthorID = int(request.form['AuthorID'])
-        GenreID = int(request.form['GenreID'])
-        TagID = int(request.form['TagID'])
-        BookType = request.form['BookType']
-        Series = request.form['Series']
-        BookNumber = int(request.form['BookNumber'])
-        Edition = request.form['Edition']
-
-        book = Book(
-            ISBN=ISBN,
-            Title=Title,
-            AuthorID=AuthorID,
-            GenreID=GenreID,
-            TagID=TagID,
-            BookType=BookType,
-            Series=Series,
-            BookNumber=BookNumber,
-            Edition=Edition
-        )
-
-        db = Mongodb.get_db()
-        db.books.insert_one(book.__dict__)
-
-        return redirect(url_for('catalog'))
-
-    return render_template('add_book.html')
 
 @app.route('/filter', methods=['GET'])
 def filter():
