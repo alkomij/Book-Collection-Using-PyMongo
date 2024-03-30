@@ -92,7 +92,7 @@ def add_book():
 
     return render_template('add_book.html')
 
-@app.route('/filter')
+@app.route('/filter', methods=['GET'])
 def filter():
     author_id = request.args.get('authorId', type=int, default=None)
     genre_id = request.args.get('genreId', type=int, default=None)
@@ -112,7 +112,7 @@ def filter():
     db = Mongodb.get_db()
     books = db.books.find(query)
 
-    return render_template('catalog.html', books=books)
+    return render_template('catalog.html', books=books, author_id=author_id, genre_id=genre_id, tag_id=tag_id)
 
 # @app.route('/search', methods=['GET', 'POST'])
 # def search():
