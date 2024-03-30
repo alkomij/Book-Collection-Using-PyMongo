@@ -32,17 +32,17 @@
         </div>
         <div class="form-group">
             <label for="Series">Series (optional):</label>
-            <input type="text" id="Series" name="Series">
+            <input type="text" id="Series" name="Series" required>
         </div>
         <div class="form-group">
             <label for="BookNumber">Book Number (optional):</label>
-            <input type="number" id="BookNumber" name="BookNumber">
+            <input type="number" id="BookNumber" name="BookNumber" required>
         </div>
         <div class="form-group">
-            <label for="Edition">Edition (optional):</label>
-            <input type="text" id="Edition" name="Edition">
+            <label for="Edition">Edition:</label>
+            <input type="text" id="Edition" name="Edition" required>
         </div>
-        <button type="submit" class="btn btn-success">Add Book</button>
+        <button type="submit" id="btn-primary" class="btn btn-primary">Add Book</button>
         <a href="{{ url_for('catalog') }}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
